@@ -89,7 +89,6 @@ namespace DeathCounter
                 IniFile iniFile = new IniFile(statsFile);
                 Dictionary<string, string> stats = iniFile.Read();
 
-                this.GameName = stats["GameName"];
                 this.Deaths = int.Parse(stats["Deaths"]);
             }
         }
@@ -102,9 +101,7 @@ namespace DeathCounter
         private void Fechar_Click(object sender, RoutedEventArgs e)
         {
             if(_isFileSaved)
-            {
                 DeathCounter.Close();
-            }
             else
             {
                 MessageBoxResult result = MessageBox.Show("O arquivo não foi salvo, deseja salvar?", "Salvar Arquivo", MessageBoxButton.YesNo, MessageBoxImage.Question);
@@ -119,9 +116,7 @@ namespace DeathCounter
                     DeathCounter.Close();
                 }
                 else
-                {
                     DeathCounter.Close();
-                }
             }
         }
 
@@ -147,9 +142,7 @@ namespace DeathCounter
             {
                 (bool, string) arquivoSalvo = SaveConfigFile();
                 if(arquivoSalvo.Item1)
-                {
                     MessageBox.Show($"Configuração salva com sucesso!\nCaminho: {arquivoSalvo.Item2}", "Salvar configuração", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
             }
         }
 
@@ -168,9 +161,7 @@ namespace DeathCounter
             {
                 (bool, string) fileSaved = SaveConfigFile();
                 if(fileSaved.Item1)
-                {
                     MessageBox.Show($"Configuração salva com sucesso!\nCaminho: {fileSaved.Item2}", "Salvar configuração", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
             }
             else
             {
@@ -276,13 +267,9 @@ namespace DeathCounter
         private void Window_KeyUp(object sender, KeyEventArgs e)
         {
             if(e.Key == Key.NumPad1)
-            {
                 Deaths++;   
-            }
             else if(e.Key == Key.NumPad2 && Deaths > 0)
-            {
                 Deaths--;
-            }
         }
     }
 }
